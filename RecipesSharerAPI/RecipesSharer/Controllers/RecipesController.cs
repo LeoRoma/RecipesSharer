@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using RecipesSharer.Models;
 
 namespace RecipesSharer.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class RecipesController : ControllerBase
@@ -28,8 +31,7 @@ namespace RecipesSharer.Controllers
             var recipes = _context.Recipes
                 .Include(r => r.Ingredients)
                 .Include(r => r.Equipments)
-                .Include(r => r.Steps)
-                .Include(r => r.User).ToListAsync();
+                .Include(r => r.Steps).ToListAsync();
             return await recipes;
         }
 
@@ -89,10 +91,23 @@ namespace RecipesSharer.Controllers
         [HttpPost]
         public async Task<ActionResult<Recipe>> PostRecipe(Recipe recipe)
         {
+
             _context.Recipes.Add(recipe);
             await _context.SaveChangesAsync();
 
+            //ingredient.RecipeId = recipe.RecipeId;
+            //_context.Ingredients.Add(ingredient);
+            //await _context.SaveChangesAsync();
+
             return CreatedAtAction("GetRecipe", new { id = recipe.RecipeId }, recipe);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Ingredient>> PostRecipe(Ingredient ingredient)
+        {
+            _context.Ingredients.Add(ingredient);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction("GetRecipe", new { id = ingredient.RecipeId }, ingredient);
         }
 
         // DELETE: api/Recipes/5
