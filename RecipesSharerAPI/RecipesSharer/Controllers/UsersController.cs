@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -79,6 +80,11 @@ namespace RecipesSharer.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            var checkUser = _context.Users.Where(u => u.Email == user.Email).FirstOrDefault();
+            if (checkUser != null)
+            {
+                return BadRequest();
+            }
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
