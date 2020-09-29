@@ -32,8 +32,8 @@ namespace RecipesSharer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RecipesSharerDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RecipesSharerDb")));
-            services.AddControllers();
-
+            //services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
