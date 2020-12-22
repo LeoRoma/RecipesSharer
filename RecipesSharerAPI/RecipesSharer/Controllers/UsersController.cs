@@ -21,6 +21,8 @@ namespace RecipesSharer.Controllers
     {
         private readonly IConfiguration _config;
         private readonly RecipesSharerDbContext _context;
+        private Helper _helper = new Helper();
+        
 
         public UsersController(RecipesSharerDbContext context, IConfiguration config)
         {
@@ -87,11 +89,14 @@ namespace RecipesSharer.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            
             var checkUser = _context.Users.Where(u => u.Email == user.Email).FirstOrDefault();
             if (checkUser != null)
             {
                 return BadRequest();
             }
+            
+            user.Password = _helper.EncryptPlainTextToCipherText(user.Password);
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 

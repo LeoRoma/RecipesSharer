@@ -21,6 +21,7 @@ namespace RecipesSharer.Controllers
     {
         private readonly IConfiguration _config;
         private readonly RecipesSharerDbContext _context;
+        private Helper _helper = new Helper();
 
         public LoginController(RecipesSharerDbContext context, IConfiguration config)
         {
@@ -50,7 +51,9 @@ namespace RecipesSharer.Controllers
         // Authenticate
         User AuthenticateUser(User loginCredentials)
         {
-            User user = _context.Users.SingleOrDefault(x => x.Username == loginCredentials.Username && x.Password == loginCredentials.Password);
+            var encryptedPassword = _context.Users.Where(x => x.Email == loginCredentials.Email).Select(x => x.Password).FirstOrDefault();
+            var decryptedPassword = _helper.DecryptCipherTextToPlainText(encryptedPassword);
+            User user = _context.Users.SingleOrDefault(x => x.Username == loginCredentials.Username && x.Password == decryptedPassword);
             return user;
         }
 

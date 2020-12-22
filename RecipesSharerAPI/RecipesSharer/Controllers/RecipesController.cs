@@ -23,7 +23,6 @@ namespace RecipesSharer.Controllers
             _context = context;
         }
 
-        // All Recipes
         // GET: api/Recipes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipes()
@@ -34,7 +33,6 @@ namespace RecipesSharer.Controllers
         }
 
         
-        // Single Recipe
         // GET: api/Recipes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Recipe>> GetRecipe(int id)
@@ -48,8 +46,6 @@ namespace RecipesSharer.Controllers
 
             return recipe;
         }
-
-        // User Recipes
 
         // PUT: api/Recipes/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
