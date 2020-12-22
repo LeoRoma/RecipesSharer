@@ -11,7 +11,7 @@ using RecipesSharer.Models;
 
 namespace RecipesSharer.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class RecipesController : ControllerBase
@@ -28,10 +28,8 @@ namespace RecipesSharer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipes()
         {
-            var recipes = _context.Recipes
-                .Include(r => r.Ingredients)
-                .Include(r => r.Equipments)
-                .Include(r => r.Steps).ToListAsync();
+            var recipes = _context.Recipes.ToListAsync();
+                
             return await recipes;
         }
 
@@ -41,7 +39,7 @@ namespace RecipesSharer.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Recipe>> GetRecipe(int id)
         {
-            var recipe = await _context.Recipes.FindAsync(id);
+            var recipe = await _context.Recipes.Include(r => r.Ingredients).Include(r => r.Equipments).Include(r => r.Steps).FirstOrDefaultAsync(r => r.RecipeId == id);
 
             if (recipe == null)
             {
@@ -88,10 +86,10 @@ namespace RecipesSharer.Controllers
         // POST: api/Recipes
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Recipe>> PostRecipe(Recipe recipe)
-        {
-
+        { 
             _context.Recipes.Add(recipe);
             await _context.SaveChangesAsync();
 
