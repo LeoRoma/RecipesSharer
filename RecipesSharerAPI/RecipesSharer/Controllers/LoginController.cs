@@ -51,9 +51,9 @@ namespace RecipesSharer.Controllers
         // Authenticate
         User AuthenticateUser(User loginCredentials)
         {
-            var encryptedPassword = _context.Users.Where(x => x.Email == loginCredentials.Email).Select(x => x.Password).FirstOrDefault();
+            var encryptedPassword = _context.Users.Where(x => x.Email == loginCredentials.Email || x.Username == loginCredentials.Username).Select(x => x.Password).FirstOrDefault();
             var decryptedPassword = _helper.DecryptCipherTextToPlainText(encryptedPassword);
-            User user = _context.Users.SingleOrDefault(x => x.Username == loginCredentials.Username && x.Password == decryptedPassword);
+            User user = _context.Users.SingleOrDefault(x => x.Username == loginCredentials.Username && loginCredentials.Password == decryptedPassword);
             return user;
         }
 
