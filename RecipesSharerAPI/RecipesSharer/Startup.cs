@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
+using RecipesSharer.Middleware;
 using RecipesSharer.Models;
 
 namespace RecipesSharer
@@ -83,6 +84,8 @@ namespace RecipesSharer
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseDynamicImageMiddleware();
 
             app.UseAuthentication();
 
