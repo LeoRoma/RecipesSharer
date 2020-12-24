@@ -18,5 +18,6 @@ namespace RecipesSharer.Models
         public string Password { get; set; }
         public string UserRole { get; set; }
         public ICollection<Recipe> Recipes { get; set; }
+        
     }
 }

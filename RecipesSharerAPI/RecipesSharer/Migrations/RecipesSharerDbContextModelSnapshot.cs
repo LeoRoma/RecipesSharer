@@ -39,6 +39,29 @@ namespace RecipesSharer.Migrations
                     b.ToTable("Equipments");
                 });
 
+            modelBuilder.Entity("RecipesSharer.Models.Image", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("Data")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Suffix")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipeId")
+                        .IsUnique();
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("RecipesSharer.Models.Ingredient", b =>
                 {
                     b.Property<int>("IngredientId")
@@ -158,6 +181,15 @@ namespace RecipesSharer.Migrations
                     b.HasOne("RecipesSharer.Models.Recipe", "Recipe")
                         .WithMany("Equipments")
                         .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RecipesSharer.Models.Image", b =>
+                {
+                    b.HasOne("RecipesSharer.Models.Recipe", "Recipe")
+                        .WithOne("Image")
+                        .HasForeignKey("RecipesSharer.Models.Image", "RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

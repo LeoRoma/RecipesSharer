@@ -29,5 +29,6 @@ namespace RecipesSharer.Models
         public ICollection<Ingredient> Ingredients { get; set; }
         public ICollection<Step> Steps { get; set; }
         public ICollection<Equipment> Equipments { get; set; }
+        public Image Image { get; set; }
     }
 }

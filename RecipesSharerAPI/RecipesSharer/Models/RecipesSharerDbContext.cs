@@ -17,6 +17,8 @@ namespace RecipesSharer.Models
         public virtual DbSet<Step> Steps { get; set; }
         public virtual DbSet<Equipment> Equipments { get; set; }
 
+        public virtual DbSet<Image> Images { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

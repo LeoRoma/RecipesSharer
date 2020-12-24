@@ -10,8 +10,8 @@ using RecipesSharer.Models;
 namespace RecipesSharer.Migrations
 {
     [DbContext(typeof(RecipesSharerDbContext))]
-    [Migration("20200929100358_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20201224030436_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,29 @@ namespace RecipesSharer.Migrations
                     b.HasIndex("RecipeId");
 
                     b.ToTable("Equipments");
+                });
+
+            modelBuilder.Entity("RecipesSharer.Models.Image", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("Data")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Suffix")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipeId")
+                        .IsUnique();
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("RecipesSharer.Models.Ingredient", b =>
@@ -144,6 +167,9 @@ namespace RecipesSharer.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserRole")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
@@ -157,6 +183,15 @@ namespace RecipesSharer.Migrations
                     b.HasOne("RecipesSharer.Models.Recipe", "Recipe")
                         .WithMany("Equipments")
                         .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RecipesSharer.Models.Image", b =>
+                {
+                    b.HasOne("RecipesSharer.Models.Recipe", "Recipe")
+                        .WithOne("Image")
+                        .HasForeignKey("RecipesSharer.Models.Image", "RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
