@@ -53,7 +53,7 @@ namespace RecipesSharer.Controllers
         {
             var encryptedPassword = _context.Users.Where(x => x.Email == loginCredentials.Email || x.Username == loginCredentials.Username).Select(x => x.Password).FirstOrDefault();
             var decryptedPassword = _helper.DecryptCipherTextToPlainText(encryptedPassword);
-            User user = _context.Users.SingleOrDefault(x => x.Username == loginCredentials.Username && loginCredentials.Password == decryptedPassword);
+            User user = _context.Users.SingleOrDefault(x => x.Username == loginCredentials.Username || x.Email == loginCredentials.Email && loginCredentials.Password == decryptedPassword);
             return user;
         }
 
