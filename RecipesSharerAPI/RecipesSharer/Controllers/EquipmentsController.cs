@@ -15,11 +15,23 @@ using RecipesSharer.Models;
 
 namespace RecipesSharer.Controllers
 {
+    [Route("[controller]")]
+    [ApiController]
     public class EquipmentsController : Controller
     {
-        public IActionResult Index()
+        private readonly IConfiguration _config;
+        private readonly RecipesSharerDbContext _context;
+
+        public EquipmentsController(RecipesSharerDbContext context, IConfiguration config)
         {
-            return View();
+            _config = config;
+            _context = context;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Equipment>>> GetEquipment()
+        {
+            return await _context.Equipments.ToListAsync();
         }
     }
 }
