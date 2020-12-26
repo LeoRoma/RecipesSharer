@@ -27,5 +27,26 @@ namespace RecipesSharer.Controllers
             _config = config;
             _context = context;
         }
+
+        // GET: api/Steps
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Step>>> GetSteps()
+        {
+            return await _context.Steps.ToListAsync();
+        }
+
+        // GET: api/Steps/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Step>> GetStep(int id)
+        {
+            var step = await _context.Steps.FindAsync(id);
+
+            if (step == null)
+            {
+                return NotFound();
+            }
+
+            return step;
+        }
     }
 }
