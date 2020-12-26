@@ -28,10 +28,25 @@ namespace RecipesSharer.Controllers
             _context = context;
         }
 
+        // GET: api/Equipments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Equipment>>> GetEquipment()
+        public async Task<ActionResult<IEnumerable<Equipment>>> GetEquipments()
         {
             return await _context.Equipments.ToListAsync();
+        }
+
+        // GET: api/Equipments/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Equipment>> GetEquipment(int id)
+        {
+            var equipment = await _context.Equipments.FindAsync(id);
+
+            if (equipment == null)
+            {
+                return NotFound();
+            }
+
+            return equipment;
         }
     }
 }
