@@ -48,5 +48,42 @@ namespace RecipesSharer.Controllers
 
             return equipment;
         }
+
+        // PUT: api/Users/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutEquipment(int id, Equipment equipment)
+        {
+            if (id != equipment.EquipmentId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(equipment).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EquipmentExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool EquipmentExists(int id)
+        {
+            return _context.Equipments.Any(e => e.EquipmentId == id);
+        }
     }
 }
