@@ -95,6 +95,22 @@ namespace RecipesSharer.Controllers
             return CreatedAtAction("GetStep", new { id = step.StepId }, step);
         }
 
+        // DELETE: api/Steps/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Step>> DeleteStep(int id)
+        {
+            var step = await _context.Steps.FindAsync(id);
+            if (step == null)
+            {
+                return NotFound();
+            }
+
+            _context.Steps.Remove(step);
+            await _context.SaveChangesAsync();
+
+            return step;
+        }
+
         private bool StepExists(int id)
         {
             return _context.Steps.Any(s => s.StepId == id);
