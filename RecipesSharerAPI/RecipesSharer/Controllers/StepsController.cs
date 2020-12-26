@@ -48,5 +48,42 @@ namespace RecipesSharer.Controllers
 
             return step;
         }
+
+        // PUT: api/Steps/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutStep(int id, Step step)
+        {
+            if (id != step.StepId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(step).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!StepExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool StepExists(int id)
+        {
+            return _context.Steps.Any(s => s.StepId == id);
+        }
     }
 }
