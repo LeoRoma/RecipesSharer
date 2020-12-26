@@ -49,7 +49,7 @@ namespace RecipesSharer.Controllers
             return equipment;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Equipments/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
@@ -79,6 +79,35 @@ namespace RecipesSharer.Controllers
             }
 
             return NoContent();
+        }
+
+        // POST: api/Equipments
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPost]
+        public async Task<ActionResult<User>> PostEquipment(Equipment equipment)
+        {
+
+            _context.Equipments.Add(equipment);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetRecipe", new { id = equipment.EquipmentId }, equipment);
+        }
+
+        // DELETE: api/Equipments/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Equipment>> DeleteEquipment(int id)
+        {
+            var equipment = await _context.Equipments.FindAsync(id);
+            if (equipment == null)
+            {
+                return NotFound();
+            }
+
+            _context.Equipments.Remove(equipment);
+            await _context.SaveChangesAsync();
+
+            return equipment;
         }
 
         private bool EquipmentExists(int id)
