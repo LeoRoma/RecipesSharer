@@ -81,6 +81,20 @@ namespace RecipesSharer.Controllers
             return NoContent();
         }
 
+
+        // POST: api/Steps
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPost]
+        public async Task<ActionResult<Step>> PostEquipment(Step step)
+        {
+
+            _context.Steps.Add(step);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetStep", new { id = step.StepId }, step);
+        }
+
         private bool StepExists(int id)
         {
             return _context.Steps.Any(s => s.StepId == id);

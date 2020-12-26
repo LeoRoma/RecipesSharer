@@ -91,7 +91,7 @@ namespace RecipesSharer.Controllers
             _context.Equipments.Add(equipment);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRecipe", new { id = equipment.EquipmentId }, equipment);
+            return CreatedAtAction("GetEquipment", new { id = equipment.EquipmentId }, equipment);
         }
 
         // DELETE: api/Equipments/5
