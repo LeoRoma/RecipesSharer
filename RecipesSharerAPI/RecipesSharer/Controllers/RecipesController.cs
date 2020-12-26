@@ -12,7 +12,7 @@ using RecipesSharer.Models;
 namespace RecipesSharer.Controllers
 {
     
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class RecipesController : ControllerBase
     {
@@ -89,20 +89,8 @@ namespace RecipesSharer.Controllers
             _context.Recipes.Add(recipe);
             await _context.SaveChangesAsync();
 
-            //ingredient.RecipeId = recipe.RecipeId;
-            //_context.Ingredients.Add(ingredient);
-            //await _context.SaveChangesAsync();
-
             return CreatedAtAction("GetRecipe", new { id = recipe.RecipeId }, recipe);
         }
-
-        //[HttpPost]
-        //public async Task<ActionResult<Ingredient>> PostRecipe(Ingredient ingredient)
-        //{
-        //    _context.Ingredients.Add(ingredient);
-        //    await _context.SaveChangesAsync();
-        //    return CreatedAtAction("GetRecipe", new { id = ingredient.RecipeId }, ingredient);
-        //}
 
         // DELETE: api/Recipes/5
         [HttpDelete("{id}")]

@@ -15,11 +15,17 @@ using RecipesSharer.Models;
 
 namespace RecipesSharer.Controllers
 {
+    [Route("[controller]")]
+    [ApiController]
     public class StepsController : Controller
     {
-        public IActionResult Index()
+        private readonly IConfiguration _config;
+        private readonly RecipesSharerDbContext _context;
+
+        public StepsController(RecipesSharerDbContext context, IConfiguration config)
         {
-            return View();
+            _config = config;
+            _context = context;
         }
     }
 }
