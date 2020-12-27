@@ -30,11 +30,18 @@ namespace RecipesSharer.Controllers
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: /Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
+        }
+
+        // GET: /Users
+        [HttpGet("{id}/recipes")]
+        public async Task<ActionResult<IEnumerable<User>>> GetUserRecipies(int id)
+        {
+            return await _context.Users.Where(x => x.UserId == id).Include(x => x.Recipes).ToListAsync();
         }
 
         // GET: api/Users/5
