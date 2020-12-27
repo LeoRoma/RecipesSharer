@@ -32,8 +32,7 @@ namespace RecipesSharer.Controllers
             return await recipes;
         }
 
-        
-        // GET: api/Recipes/5
+        // GET: Recipes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Recipe>> GetRecipe(int id)
         {

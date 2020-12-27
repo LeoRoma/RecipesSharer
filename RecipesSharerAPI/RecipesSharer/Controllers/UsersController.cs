@@ -37,13 +37,6 @@ namespace RecipesSharer.Controllers
             return await _context.Users.ToListAsync();
         }
 
-        // GET: /Users
-        [HttpGet("{id}/recipes")]
-        public async Task<ActionResult<IEnumerable<User>>> GetUserRecipies(int id)
-        {
-            return await _context.Users.Where(x => x.UserId == id).Include(x => x.Recipes).ToListAsync();
-        }
-
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
@@ -56,6 +49,20 @@ namespace RecipesSharer.Controllers
             }
 
             return user;
+        }
+
+        // GET: /Users/1/recipes
+        [HttpGet("{id}/recipes")]
+        public async Task<ActionResult<IEnumerable<User>>> GetUserRecipes(int id)
+        {
+            return await _context.Users.Where(x => x.UserId == id).Include(x => x.Recipes).ToListAsync();
+        }
+
+        // GET: /Users/1/recipes/1
+        [HttpGet("{userId}/recipes/{recipeId}")]
+        public async Task<ActionResult<Recipe>> GetUserRecipes(int userId, int recipeId)
+        {
+            return await _context.Recipes.Where(x => x.UserId == userId && x.RecipeId == recipeId).Include(r => r.Ingredients).Include(r => r.Equipments).Include(r => r.Steps).FirstOrDefaultAsync(r => r.RecipeId == recipeId);
         }
 
         // PUT: api/Users/5
