@@ -34,6 +34,12 @@ namespace RecipesSharer.Controllers
         [AllowAnonymous]
         public IActionResult Login([FromBody] User login)
         {
+            var userExists = _context.Users.Where(x => x.Email == login.Email).FirstOrDefault();
+            if (userExists == null)
+            {
+                return BadRequest();
+            }
+
             IActionResult response = Unauthorized();
             User user = AuthenticateUser(login);
             if (user != null)
@@ -78,5 +84,6 @@ namespace RecipesSharer.Controllers
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
     }
 }
