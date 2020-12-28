@@ -27,7 +27,7 @@ namespace RecipesSharer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipes()
         {
-            var recipes = _context.Recipes.ToListAsync();
+            var recipes = _context.Recipes.Include(r => r.User).Include(r => r.Image).ToListAsync();
                 
             return await recipes;
         }
