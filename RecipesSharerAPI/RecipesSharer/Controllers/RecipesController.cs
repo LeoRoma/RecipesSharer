@@ -89,7 +89,8 @@ namespace RecipesSharer.Controllers
         [Authorize]
         [HttpPost("post")]
         public async Task<ActionResult<Recipe>> PostRecipe(Recipe recipe)
-        { 
+        {
+            recipe.PostDate = new DateTime();
             _context.Recipes.Add(recipe);
             await _context.SaveChangesAsync();
 
