@@ -36,7 +36,12 @@ namespace RecipesSharer.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Recipe>> GetRecipe(int id)
         {
-            var recipe = await _context.Recipes.Include(r => r.Ingredients).Include(r => r.Equipments).Include(r => r.Steps).FirstOrDefaultAsync(r => r.RecipeId == id);
+            var recipe = await _context.Recipes.Include(r => r.Ingredients)
+                .Include(r => r.Equipments)
+                .Include(r => r.Steps)
+                .Include(r => r.User)
+                .Include(r => r.Image)
+                .FirstOrDefaultAsync(r => r.RecipeId == id);
 
             if (recipe == null)
             {

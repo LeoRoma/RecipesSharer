@@ -27,7 +27,6 @@ namespace RecipesSharer.Controllers
                         Data = ms.ToArray()
                     };
 
-                    img.RecipeId = 2;
                     db.Images.Add(img);
                     await db.SaveChangesAsync();
                     return img.Id;
