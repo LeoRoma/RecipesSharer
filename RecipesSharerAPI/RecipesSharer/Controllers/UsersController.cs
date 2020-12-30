@@ -59,15 +59,15 @@ namespace RecipesSharer.Controllers
         }
 
         // GET: /Users/1/recipes/1
-        [HttpGet("{userId}/recipes/{recipeId}")]
-        public async Task<ActionResult<Recipe>> GetUserRecipes(int userId, int recipeId)
-        {
-            return await _context.Recipes.Where(x => x.UserId == userId && x.RecipeId == recipeId)
-                .Include(r => r.Ingredients)
-                .Include(r => r.Equipments)
-                .Include(r => r.Steps)
-                .FirstOrDefaultAsync(r => r.RecipeId == recipeId);
-        }
+        //[HttpGet("{userId}/recipes/{recipeId}")]
+        //public async Task<ActionResult<Recipe>> GetUserRecipes(int userId, int recipeId)
+        //{
+        //    return await _context.Recipes.Where(x => x.UserId == userId && x.RecipeId == recipeId)
+        //        .Include(r => r.Ingredients)
+        //        .Include(r => r.Equipments)
+        //        .Include(r => r.Steps)
+        //        .FirstOrDefaultAsync(r => r.RecipeId == recipeId);
+        //}
 
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
