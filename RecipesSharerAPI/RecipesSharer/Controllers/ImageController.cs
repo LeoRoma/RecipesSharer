@@ -13,8 +13,8 @@ namespace RecipesSharer.Controllers
     [ApiController]
     public class ImageController : Controller
     {
-        [HttpPost("image")]
-        public async Task<Guid> Image(IFormFile image)
+        [HttpPost("post/{recipeId}")]
+        public async Task<Guid> Image(IFormFile image, int recipeId)
         {
             using (var db = new RecipesSharerDbContext())
             {
@@ -27,6 +27,7 @@ namespace RecipesSharer.Controllers
                         Data = ms.ToArray()
                     };
 
+                    img.RecipeId = recipeId;
                     db.Images.Add(img);
                     await db.SaveChangesAsync();
                     return img.Id;

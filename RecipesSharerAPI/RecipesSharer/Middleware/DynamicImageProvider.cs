@@ -23,7 +23,8 @@ namespace RecipesSharer.Middleware
         private static readonly string[] suffixes = new string[] {
             ".png",
             ".jpg",
-            ".gif"
+            ".gif",
+            ".jpeg"
         };
 
         private bool IsImagePath(PathString path)
