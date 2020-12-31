@@ -9,7 +9,7 @@ using RecipesSharer.Models;
 
 namespace RecipesSharer.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class IngredientsController : ControllerBase
     {
@@ -76,7 +76,7 @@ namespace RecipesSharer.Controllers
         // POST: api/Ingredients
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
+        [HttpPost("post")]
         public async Task<ActionResult<Ingredient>> PostIngredient(Ingredient ingredient)
         {
             _context.Ingredients.Add(ingredient);
