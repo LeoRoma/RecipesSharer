@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using RecipesSharer.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RecipesSharer.Controllers
 {
@@ -13,6 +14,7 @@ namespace RecipesSharer.Controllers
     [ApiController]
     public class ImageController : Controller
     {
+        [Authorize]
         [HttpPost("post/{recipeId}")]
         public async Task<Guid> Image(IFormFile image, int recipeId)
         {
