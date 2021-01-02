@@ -54,6 +54,7 @@ namespace RecipesSharer.Controllers
         // PUT: api/Recipes/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRecipe(int id, Recipe recipe)
         {
@@ -98,7 +99,8 @@ namespace RecipesSharer.Controllers
         }
 
         // DELETE: api/Recipes/5
-        [HttpDelete("{id}")]
+        [Authorize]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult<Recipe>> DeleteRecipe(int id)
         {
             var recipe = await _context.Recipes.FindAsync(id);
