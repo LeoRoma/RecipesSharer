@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +45,7 @@ namespace RecipesSharer.Controllers
         // PUT: api/Ingredients/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutIngredient(int id, Ingredient ingredient)
         {
@@ -76,6 +78,7 @@ namespace RecipesSharer.Controllers
         // POST: api/Ingredients
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Authorize]
         [HttpPost("post")]
         public async Task<ActionResult<Ingredient>> PostIngredient(Ingredient ingredient)
         {
@@ -86,6 +89,7 @@ namespace RecipesSharer.Controllers
         }
 
         // DELETE: api/Ingredients/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Ingredient>> DeleteIngredient(int id)
         {
