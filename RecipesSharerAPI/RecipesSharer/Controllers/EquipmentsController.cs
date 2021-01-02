@@ -52,6 +52,7 @@ namespace RecipesSharer.Controllers
         // PUT: api/Equipments/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEquipment(int id, Equipment equipment)
         {
@@ -84,6 +85,7 @@ namespace RecipesSharer.Controllers
         // POST: api/Equipments
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Authorize]
         [HttpPost("post")]
         public async Task<ActionResult<User>> PostEquipment(Equipment equipment)
         {
@@ -95,6 +97,7 @@ namespace RecipesSharer.Controllers
         }
 
         // DELETE: api/Equipments/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Equipment>> DeleteEquipment(int id)
         {
