@@ -58,16 +58,16 @@ namespace RecipesSharer.Controllers
             return await _context.Recipes.Where(r => r.UserId == id).Include(x => x.User).Include(r => r.Image).ToListAsync();
         }
 
-        // GET: /Users/1/recipes/1
-        //[HttpGet("{userId}/recipes/{recipeId}")]
-        //public async Task<ActionResult<Recipe>> GetUserRecipes(int userId, int recipeId)
-        //{
-        //    return await _context.Recipes.Where(x => x.UserId == userId && x.RecipeId == recipeId)
-        //        .Include(r => r.Ingredients)
-        //        .Include(r => r.Equipments)
-        //        .Include(r => r.Steps)
-        //        .FirstOrDefaultAsync(r => r.RecipeId == recipeId);
-        //}
+        //GET: /Users/1/recipes/1
+        [HttpGet("{userId}/recipe/{recipeId}")]
+        public async Task<ActionResult<Recipe>> GetUserRecipe(int userId, int recipeId)
+        {
+            return await _context.Recipes.Where(x => x.UserId == userId && x.RecipeId == recipeId)
+                .Include(r => r.Ingredients)
+                .Include(r => r.Equipments)
+                .Include(r => r.Steps)
+                .FirstOrDefaultAsync(r => r.RecipeId == recipeId);
+        }
 
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
