@@ -62,11 +62,20 @@ namespace RecipesSharer.Controllers
         [HttpGet("{userId}/recipe/{recipeId}")]
         public async Task<ActionResult<Recipe>> GetUserRecipe(int userId, int recipeId)
         {
-            return await _context.Recipes.Where(x => x.UserId == userId && x.RecipeId == recipeId)
+            var userRecipe =  await _context.Recipes
                 .Include(r => r.Ingredients)
                 .Include(r => r.Equipments)
                 .Include(r => r.Steps)
-                .FirstOrDefaultAsync(r => r.RecipeId == recipeId);
+                .Include(r => r.User)
+                .Include(r => r.Image)
+                .FirstOrDefaultAsync(r => r.RecipeId == recipeId && r.UserId == userId);
+
+            if (userRecipe == null)
+            {
+                return NotFound();
+            }
+
+            return userRecipe;
         }
 
         // PUT: api/Users/5
