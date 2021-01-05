@@ -53,10 +53,10 @@ namespace RecipesSharer.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [Authorize]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutStep(int id, Step step)
+        [HttpPut("{stepId}/recipe/{recipeId}")]
+        public async Task<IActionResult> PutStep(int stepId, int recipeId, Step step)
         {
-            if (id != step.StepId)
+            if (stepId != step.StepId && recipeId != step.RecipeId)
             {
                 return BadRequest();
             }
@@ -69,7 +69,7 @@ namespace RecipesSharer.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!StepExists(id))
+                if (!StepExists(stepId, recipeId))
                 {
                     return NotFound();
                 }
@@ -114,9 +114,9 @@ namespace RecipesSharer.Controllers
             return step;
         }
 
-        private bool StepExists(int id)
+        private bool StepExists(int stepId, int recipeId)
         {
-            return _context.Steps.Any(s => s.StepId == id);
+            return _context.Steps.Any(s => s.StepId == stepId && s.RecipeId == recipeId);
         }
     }
 }
