@@ -53,10 +53,10 @@ namespace RecipesSharer.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [Authorize]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEquipment(int id, Equipment equipment)
+        [HttpPut("{equipmentId}/recipe/{recipeId}")]
+        public async Task<IActionResult> PutEquipment(int equipmentId, int recipeId, Equipment equipment)
         {
-            if (id != equipment.EquipmentId)
+            if (equipmentId != equipment.EquipmentId && recipeId != equipment.RecipeId)
             {
                 return BadRequest();
             }
@@ -69,7 +69,7 @@ namespace RecipesSharer.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EquipmentExists(id))
+                if (!EquipmentExists(equipmentId, recipeId))
                 {
                     return NotFound();
                 }
@@ -113,9 +113,9 @@ namespace RecipesSharer.Controllers
             return equipment;
         }
 
-        private bool EquipmentExists(int id)
+        private bool EquipmentExists(int equipmentId, int recipeId)
         {
-            return _context.Equipments.Any(e => e.EquipmentId == id);
+            return _context.Equipments.Any(e => e.EquipmentId == equipmentId && e.RecipeId == recipeId);
         }
     }
 }
