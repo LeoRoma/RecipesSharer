@@ -58,7 +58,7 @@ namespace RecipesSharer.Controllers
             return await _context.Recipes.Where(r => r.UserId == id).Include(x => x.User).Include(r => r.Image).ToListAsync();
         }
 
-        //GET: /Users/1/recipes/1
+        //GET: /Users/1/recipe/1
         [HttpGet("{userId}/recipe/{recipeId}")]
         public async Task<ActionResult<Recipe>> GetUserRecipe(int userId, int recipeId)
         {

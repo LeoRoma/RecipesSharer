@@ -51,14 +51,14 @@ namespace RecipesSharer.Controllers
             return recipe;
         }
 
-        // PUT: api/Recipes/5
+        // PUT: Recipes/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [Authorize]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRecipe(int id, Recipe recipe)
+        [HttpPut("{recipeId}/user/{userId}")]
+        public async Task<IActionResult> PutRecipe(int userId, int recipeId, Recipe recipe)
         {
-            if (id != recipe.RecipeId)
+            if (userId != recipe.UserId && recipeId != recipe.RecipeId)
             {
                 return BadRequest();
             }
@@ -71,7 +71,7 @@ namespace RecipesSharer.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RecipeExists(id))
+                if (!RecipeExists(userId, recipeId))
                 {
                     return NotFound();
                 }
@@ -115,9 +115,9 @@ namespace RecipesSharer.Controllers
             return recipe;
         }
 
-        private bool RecipeExists(int id)
+        private bool RecipeExists(int userId, int recipeId)
         {
-            return _context.Recipes.Any(e => e.RecipeId == id);
+            return _context.Recipes.Any(e => e.RecipeId == recipeId && e.UserId == userId);
         }
     }
 }
