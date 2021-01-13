@@ -58,7 +58,7 @@ namespace RecipesSharer.Controllers
         [HttpPut("{recipeId}/user/{userId}")]
         public async Task<IActionResult> PutRecipe(int userId, int recipeId, Recipe recipe)
         {
-            if (userId != recipe.UserId && recipeId != recipe.RecipeId)
+            if (recipeId != recipe.RecipeId && userId != recipe.UserId)
             {
                 return BadRequest();
             }
@@ -71,7 +71,7 @@ namespace RecipesSharer.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RecipeExists(userId, recipeId))
+                if (!RecipeExists(recipeId, userId))
                 {
                     return NotFound();
                 }
@@ -115,7 +115,7 @@ namespace RecipesSharer.Controllers
             return recipe;
         }
 
-        private bool RecipeExists(int userId, int recipeId)
+        private bool RecipeExists(int recipeId, int userId)
         {
             return _context.Recipes.Any(e => e.RecipeId == recipeId && e.UserId == userId);
         }
