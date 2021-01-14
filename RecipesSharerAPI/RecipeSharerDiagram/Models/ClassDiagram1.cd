@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="RecipesSharer.Models.Equipment">
+    <Position X="0.5" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAABAAAAAAAAAIAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RecipesSharer.Models.Image">
+    <Position X="9" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAAAAAAAAAAAAAAAAAABAAACAACAAAAAA=</HashCode>
+      <FileName>Models\Image.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RecipesSharer.Models.Ingredient">
+    <Position X="8.5" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABgAAAAAAAAAAAAAACABAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Ingredient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RecipesSharer.Models.Recipe">
+    <Position X="4.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAIBAAAAQAAiATAAAAAAAigAAAAAABAAAAAACAAAAgA=</HashCode>
+      <FileName>Models\Recipe.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Equipments" />
+      <Property Name="Ingredients" />
+      <Property Name="Steps" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RecipesSharer.Models.Step">
+    <Position X="4.5" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABAAAAAAAAAAAAAAAAAAAAMAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Step.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RecipesSharer.Models.User">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAQAAIAgAAAAAAAgCAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Recipes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
