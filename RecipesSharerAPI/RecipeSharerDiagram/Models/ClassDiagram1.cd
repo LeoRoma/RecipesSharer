@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="RecipesSharer.Models.Equipment">
-    <Position X="0.5" Y="4.5" Width="2.5" />
+    <Position X="6" Y="5.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAABAAAAAAAAAIAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Models\Equipment.cs</FileName>
@@ -15,7 +15,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RecipesSharer.Models.Ingredient">
-    <Position X="8.5" Y="5" Width="2.5" />
+    <Position X="9.75" Y="4.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABgAAAAAAAAAAAAAACABAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Models\Ingredient.cs</FileName>
@@ -34,7 +34,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="RecipesSharer.Models.Step">
-    <Position X="4.5" Y="5" Width="2.5" />
+    <Position X="0.75" Y="4.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAQAAABAAAAAAAAAAAAAAAAAAAAMAAAAAAAACAAAAAA=</HashCode>
       <FileName>Models\Step.cs</FileName>
@@ -42,6 +42,15 @@
   </Class>
   <Class Name="RecipesSharer.Models.User">
     <Position X="0.5" Y="0.5" Width="3" />
+    <AssociationLine Name="Recipes" Type="RecipesSharer.Models.Recipe" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="2" />
+        <Point X="4.5" Y="2" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.068" Y="0.235" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAQAAIAgAAAAAAAgCAAAAAAAAAAA=</HashCode>
       <FileName>Models\User.cs</FileName>
