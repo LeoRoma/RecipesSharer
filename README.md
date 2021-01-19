@@ -42,3 +42,8 @@ I have also created a Login Controller where does the User Authentication, once 
 #### Ingredients
 #### Steps
 ### DELETE
+#### Recipes
+#### Image
+#### Equipments
+#### Ingredients
+#### Steps
