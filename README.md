@@ -30,5 +30,11 @@ I have also created a Login Controller where does the User Authentication, once 
 #### Recipes
 
 ### POST
+#### Users
+#### Recipes
+#### Image
+#### Equipments
+#### Ingredients
+#### Steps
 ### PUT
 ### DELETE
