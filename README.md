@@ -29,24 +29,24 @@ I have also created a Login Controller where does the User Authentication, once 
 
 ## API Docs
 ### GET
-#### Users
-#### Recipes
+#### /Users
+#### /Recipes
 
 ### POST
-#### Users
-#### Recipes
-#### Image
-#### Equipments
-#### Ingredients
-#### Steps
+#### /Users
+#### /Recipes
+#### /Image
+#### /Equipments
+#### /Ingredients
+#### /Steps
 ### PUT
-#### Recipes
-#### Equipments
-#### Ingredients
-#### Steps
+#### /Recipes
+#### /Equipments
+#### /Ingredients
+#### /Steps
 ### DELETE
-#### Recipes
-#### Image
-#### Equipments
-#### Ingredients
-#### Steps
+#### /Recipes
+#### /Image
+#### /Equipments
+#### /Ingredients
+#### /Steps
