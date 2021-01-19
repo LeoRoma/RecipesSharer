@@ -25,3 +25,10 @@ are GET, POST, PUT and DELETE. <br />
 I have also created a Login Controller where does the User Authentication, once the User has been authenticated generates a Token that I have set up with JWT Bearer. The Token generated is going to be used to access to the different functionality of the API, such as POST, PUT and DELETE Recipes, Ingredients, Steps, Equipments and Images.
 
 ## API Docs
+### GET
+#### Users
+#### Recipes
+
+### POST
+### PUT
+### DELETE
