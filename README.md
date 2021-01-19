@@ -1,5 +1,8 @@
 # RecipesSharerApi
 
+## Description
+- Recipes Sharer is an API that allows to a user to register/login, gives the possibilities to perform CRUD functionalities of Recipes, Image, Ingredient, Equipments and Steps.
+
 ## Tech Stack
 - Asp.Net web API
 - Database SQL
