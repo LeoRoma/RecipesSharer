@@ -339,6 +339,34 @@ On success, the above command returns JSON structured like this:
 
 ### POST
 #### /Users
+
+Creates a new user.
+
+```
+curl "https://localhost:44330/Users"
+
+-X POST \
+-H "Content-Type: application/json" \
+-D {
+        username: username,
+        email: email,
+        password: password,
+        userRole: "user"
+    }
+```
+
+On success, the above command returns JSON structured like this:
+
+```
+    {
+        userId: 1, 
+        username: "Leo", 
+        email: "Leo@gmail.com", 
+        password: "vxFh7ubhh0Q=", 
+    userRole: "user"
+    }
+```
+#### /Login
 #### /Recipes
 #### /Image
 #### /Equipments
