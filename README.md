@@ -19,6 +19,10 @@
 - Swashbuckle.AspNetCore Version = 5.6.3
 - Swagger
 
+## Database ERD
+
+![Image screenshot](./screenshots/ClassDiagram.jpg)
+
 ## Approach
 I have utilised Model First technique to create the database, by creating first User, Recipe, Ingredient, Step, Equipment and Image. After I have used Entity Framework to connect the model to the database server by creating RecipeSharerDbContext, I have passed the connection string into Startup.js. In the console I have run ```Add-Migration InitialMigration``` and after ```Update-Database```.
 
