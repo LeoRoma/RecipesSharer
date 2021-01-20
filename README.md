@@ -49,6 +49,46 @@ On success, the above command returns JSON structured like this:
     }
 ] 
 ```
+#### /Users/{id}/recipes
+
+Returns a list of a user's recipes
+
+```curl "https://localhost:44330/Users/{id}/recipes"``` 
+
+On success, the above command returns JSON structured like this:
+
+```
+[
+    {
+        "recipeId": 49,
+        "recipeName": "lasagna",
+        "description": "Best authentic Italian recipe, easy to prepare and you will impress your friends. Very good",
+        "difficulty": "easy",
+        "preparationTime": "10 mins",
+        "cookingTime": "40 mins",
+        "additionalTime": "30 mins",
+        "servings": 4,
+        "postDate": "2021-01-13T15:01:37.2451823",
+        "userId": 1,
+        "user": {
+            "userId": 1,
+            "username": "Leo",
+            "email": "leo@gmail.com",
+            "password": "vxFh7ubhh0Q=",
+            "userRole": "admin",
+            "recipes": []
+        },
+        "ingredients": [],
+        "steps": [],
+        "equipments": [],
+        "image": {
+            "id": "5e8d7b2e-866a-4ee5-7baa-08d8b7caeb89",
+            "suffix": ".jpg",
+            "recipeId": 49
+        }
+    }
+]
+```
 
 #### /Recipes
 
@@ -61,33 +101,33 @@ On success, the above command returns JSON structured like this:
 ```
 [
     {
-        "recipeId": 43,
-        "recipeName": "seafood paella",
-        "description": "Authentic Spanish paella, very tasty with seafood.\nSimple to prepare and nice to share with friends.",
+        "recipeId": 49,
+        "recipeName": "lasagna",
+        "description": "Best authentic Italian recipe, easy to prepare and you will impress your friends. Very good",
         "difficulty": "easy",
-        "preparationTime": "1h",
-        "cookingTime": "1h",
-        "additionalTime": "5h",
-        "servings": 5,
-        "postDate": "2021-01-12T19:33:27.2246321",
-        "userId": 7,
+        "preparationTime": "10 mins",
+        "cookingTime": "40 mins",
+        "additionalTime": "30 mins",
+        "servings": 4,
+        "postDate": "2021-01-13T15:01:37.2451823",
+        "userId": 1,
         "user": {
-        "userId": 7,
-            "username": "Mario",
-            "email": "mario@gmail.com",
+            "userId": 1,
+            "username": "Leo",
+            "email": "leo@gmail.com",
             "password": "vxFh7ubhh0Q=",
-            "userRole": "user",
+            "userRole": "admin",
             "recipes": []
         },
-            "ingredients": [],
-            "steps": [],
-            "equipments": [],
-            "image": {
-                "id": "b9894cb0-e74f-4df1-833f-08d8b72db795",
-                "suffix": ".jpg",
-                "recipeId": 43
+        "ingredients": [],
+        "steps": [],
+        "equipments": [],
+        "image": {
+            "id": "5e8d7b2e-866a-4ee5-7baa-08d8b7caeb89",
+            "suffix": ".jpg",
+            "recipeId": 49
         }
-    }
+    },
 ]
 
 ```
@@ -95,102 +135,101 @@ On success, the above command returns JSON structured like this:
 
 Returns one particular recipe 
 
-```curl "https://localhost:44330/Recipes/5"```
+```curl "https://localhost:44330/Recipes/{id}"```
 
 On success, the above command returns JSON structured like this:
 
 ```
 {
-    "recipeId": 43,
-    "recipeName": "seafood paella",
-    "description": "Authentic Spanish paella, very tasty with seafood.\nSimple to prepare and nice to share with friends.",
+    "recipeId": 49,
+    "recipeName": "lasagna",
+    "description": "Best authentic Italian recipe, easy to prepare and you will impress your friends. Very good",
     "difficulty": "easy",
-    "preparationTime": "1h",
-    "cookingTime": "1h",
-    "additionalTime": "5h",
-    "servings": 5,
-    "postDate": "2021-01-12T19:33:27.2246321",
-    "userId": 7,
+    "preparationTime": "10 mins",
+    "cookingTime": "40 mins",
+    "additionalTime": "30 mins",
+    "servings": 4,
+    "postDate": "2021-01-13T15:01:37.2451823",
+    "userId": 1,
     "user": {
-        "userId": 7,
-        "username": "Mario",
-        "email": "mario@gmail.com",
+        "userId": 1,
+        "username": "Leo",
+        "email": "leo@gmail.com",
         "password": "vxFh7ubhh0Q=",
-        "userRole": "user",
+        "userRole": "admin",
         "recipes": []
     },
     "ingredients": [
         {
-            "ingredientId": 77,
-            "ingredientName": "Clams",
-            "amount": "200 gr",
-            "recipeId": 43
-        },
-        {
-            "ingredientId": 78,
-            "ingredientName": "Water",
-            "amount": "1.5 L",
-            "recipeId": 43
-        },
-        {
-            "ingredientId": 79,
-            "ingredientName": "Rice",
-            "amount": "1 kg",
-            "recipeId": 43
-        },
-        {
-            "ingredientId": 80,
-            "ingredientName": "Prawn",
+            "ingredientId": 92,
+            "ingredientName": "Meat mince",
             "amount": "500 gr",
-            "recipeId": 43
+            "recipeId": 49
         },
         {
-            "ingredientId": 81,
-            "ingredientName": "Fish head",
-            "amount": "2 pcs",
-            "recipeId": 43
+            "ingredientId": 93,
+            "ingredientName": "Tomato sauce",
+            "amount": "500 gr",
+            "recipeId": 49
         },
         {
-            "ingredientId": 82,
-            "ingredientName": "Mussels",
-            "amount": "200 gr",
-            "recipeId": 43
+            "ingredientId": 94,
+            "ingredientName": "Carrot",
+            "amount": "1 pc",
+            "recipeId": 49
+        },
+        {
+            "ingredientId": 95,
+            "ingredientName": "Flour",
+            "amount": "65 gr",
+            "recipeId": 49
+        },
+        {
+            "ingredientId": 96,
+            "ingredientName": "Milk",
+            "amount": "1 l",
+            "recipeId": 49
         }
     ],
     "steps": [
         {
-        "stepId": 34,
-        "stepNumber": 2,
-        "instruction": "Change",
-        "recipeId": 43
+            "stepId": 40,
+            "stepNumber": 1,
+            "instruction": "Cook lasagna, put in the oven for 40 minutes at 180 degrees. After 40 minutes switch off the oven and let it rest for 30 minutes.\nBuon Appetito!",
+            "recipeId": 49
         }
     ],
     "equipments": [
         {
-        "equipmentId": 43,
-        "equipmentName": "Paella pan",
-        "recipeId": 43
+            "equipmentId": 51,
+            "equipmentName": "Change",
+            "recipeId": 49
         },
         {
-        "equipmentId": 44,
-        "equipmentName": "Pot",
-        "recipeId": 43
+            "equipmentId": 52,
+            "equipmentName": "Pot",
+            "recipeId": 49
         },
         {
-        "equipmentId": 45,
-        "equipmentName": "Chopping board",
-        "recipeId": 43
+            "equipmentId": 54,
+            "equipmentName": "Update",
+            "recipeId": 49
         },
         {
-        "equipmentId": 46,
-        "equipmentName": "Knife",
-        "recipeId": 43
+            "equipmentId": 55,
+            "equipmentName": "Oven",
+            "recipeId": 49
+        },
+        {
+            "equipmentId": 56,
+            "equipmentName": "Laddle",
+            "recipeId": 49
         }
     ],
     "image": {
-        "id": "b9894cb0-e74f-4df1-833f-08d8b72db795",
+        "id": "5e8d7b2e-866a-4ee5-7baa-08d8b7caeb89",
         "suffix": ".jpg",
-        "recipeId": 43
+        "recipeId": 49
     }
 }
 ```
