@@ -558,8 +558,10 @@ On success, the above command returns JSON structured like this:
 #### /Recipes/{recipeId}/user/{userId}
 Gives the opportunity to update one or more recipe's field/s
 
+This endpoint requires a recipeId, userId and a given token in the authorization header.
+
 ```
-curl "https://localhost:44330/Recipes/{recipeId}/user/{userId}
+curl "https://localhost:44330/Recipes/{recipeId}/user/{userId}"
 -X PUT \
 -H "Content-Type': 'application/json",
     "Authorization': "Bearer " + token"
@@ -575,35 +577,134 @@ curl "https://localhost:44330/Recipes/{recipeId}/user/{userId}
    }
 ```
 
-On success, the above command returns JSON structured like this:
+The above command returns a 204: No Content response on success.
+
+#### /Equipments/equipmentId/user/userId
+Gives the opportunity to update one or more equipment's field/s
+
+This endpoint requires a equipmentId, recipeId and a given token in the authorization header.
 
 ```
-{
-    recipeId: recipeId
-    recipeName: "recipeName"
-    description: "description"
-    difficulty: "difficulty"
-    preparationTime: "preparationTime"
-    cookingTime: "cookingTime"
-    additionalTime: "additionalTime"
-    postDate: "0000-01-01T00:00:00.0000000+00:00"
-    servings: 5
-    equipments: []
-    image: null
-    ingredients: []
-    steps: []
-    user: null
-    userId: 1
-}
+curl "https://localhost:44330/Equipments/{equipmentId}/recipe/{recipeId}"
+-X PUT \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+-D  {
+        equipmentId: equipmentId,
+        equipmentName: equipmentName,
+        recipeId: recipeId
+    }
 ```
 
-#### /Equipment
+The above command returns a 204: No Content response on success.
 
-#### /Ingredients
-#### /Steps
+#### /Ingredients/{ingredientId}/user/{userId}
+Gives the opportunity to update one or more equipment's field/s
+
+
+This endpoint requires a ingredientId, recipeId and a given token in the authorization header.
+
+```
+curl "https://localhost:44330/Ingredients/{ingredientId}/recipe/{recipeId}"
+-X PUT \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+-D  {
+        ingredientId: ignredientId,
+        ingredientName: ingredientName,
+        amount: amount,
+        recipeId: recipeId
+    }
+```
+
+The above command returns a 204: No Content response on success.
+
+#### /Steps/{stepId}/user/{userId}
+Gives the opportunity to update one or more equipment's field/s
+
+This endpoint requires a stepId, recipeId and a given token in the authorization header.
+
+```
+curl "https://localhost:44330/Steps/{stepId}/recipe/{recipeId}"
+-X PUT \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+-D  {
+        stepId: stepId,
+        stepNumber: stepNumber,
+        stepName: stepName,
+        recipeId: recipeId
+    }
+```
+
+The above command returns a 204: No Content response on success.
+
 ### DELETE
-#### /Recipes
-#### /Image
-#### /Equipments
+#### /Recipes{recipeId}
+Delete a Recipe
+
+This endpoint requires a recipeId and a given token in the authorization header.
+
+```
+curl "https://localhost:44330/Recipes/{recipeId}"
+-X PUT \
+-H  "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+```
+
+The above command returns a 204: No Content response on success.
+
+#### /Image/delete/{recipeId}
+Delete an Image
+
+This endpoint requires a recipeId and a given token in the authorization header.
+
+```
+curl "https://localhost:44330/Image/delete/{recipeId}"
+-X PUT \
+-H  "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+```
+
+The above command returns a 204: No Content response on success.
+
+#### /Equipments/{equipmentId}
+Delete an Equipment
+
+This endpoint requires a equipmentId and a given token in the authorization header.
+
+```
+curl "https://localhost:44330/Equipments/{equipmentId}"
+-X PUT \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+```
+
+The above command returns a 204: No Content response on success.
+
+
 #### /Ingredients
+Delete an Equipment
+
+This endpoint requires a equipmentId and a given token in the authorization header.
+
+```
+curl "https://localhost:44330/Equipments/{equipmentId}"
+-X PUT \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+```
+The above command returns a 204: No Content response on success.
+
 #### /Steps
+Delete a Step
+
+This endpoint requires a stepId and a given token in the authorization header.
+
+```
+curl "https://localhost:44330/Steps/{stepId}"
+-X PUT \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+```
+The above command returns a 204: No Content response on success.

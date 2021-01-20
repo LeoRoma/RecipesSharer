@@ -100,7 +100,7 @@ namespace RecipesSharer.Controllers
 
         // DELETE: api/Recipes/5
         [Authorize]
-        [HttpDelete("delete/{id}")]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<Recipe>> DeleteRecipe(int id)
         {
             var recipe = await _context.Recipes.FindAsync(id);

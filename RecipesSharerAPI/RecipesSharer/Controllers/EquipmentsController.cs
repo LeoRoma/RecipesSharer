@@ -49,7 +49,7 @@ namespace RecipesSharer.Controllers
             return equipment;
         }
 
-        // PUT: api/Equipments/5
+        // PUT: Equipments/equipmentId/user/userId
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [Authorize]
