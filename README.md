@@ -423,18 +423,18 @@ On success, the above command returns JSON structured like this:
 
 ```
 {
-    additionalTime: "5h"
-    cookingTime: "1h"
+    recipeId: 68
+    recipeName: "Test"
     description: "test"
     difficulty: "easy"
+    preparationTime: "1h"
+    cookingTime: "1h"
+    additionalTime: "5h"
+    postDate: "2021-01-20T13:05:13.1582906+00:00"
+    servings: 5
     equipments: []
     image: null
     ingredients: []
-    postDate: "2021-01-20T13:05:13.1582906+00:00"
-    preparationTime: "1h"
-    recipeId: 68
-    recipeName: "Test"
-    servings: 5
     steps: []
     user: null
     userId: 1
@@ -469,9 +469,91 @@ On success, the above command returns JSON structured like this:
     }
 ```
 
-#### /Equipments
+#### /Equipment
+Create a new Equipment
+
+This endpoint requires a recipeId and a given token in the authorization header.
+
+```
+curl "https://localhost:44330/Equipments/post"
+-X POST \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+-D {
+      equipmentName: equipmentName,
+      recipeId: recipeId
+}
+```
+
+On success, the above command returns JSON structured like this:
+
+```
+{
+    equipmentId: equipmentId
+    equipmentName: "equipmentName"
+    recipe: null
+    recipeId: recipeId
+}
+```
+
 #### /Ingredients
+Create a new Ingredient
+
+This endpoint requires a recipeId and a given token in the authorization header.
+
+```
+curl "https://localhost:44330/Ingredients/post"
+-X POST \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+-D {
+        ingredientName: ingredientName,
+        amount: amount,
+        recipeId: recipeId
+    }
+```
+
+On success, the above command returns JSON structured like this:
+
+```
+{
+    ingredientId: ingredientId, 
+    ingredientName: "ingredientName", 
+    amount: "amount", 
+    recipeId: recipeId, 
+    recipe: null
+}
+```
+
 #### /Steps
+Create a new Step
+
+This endpoint requires a recipeId and a given token in the authorization header.
+
+```
+curl "https://localhost:44330/Steps/post"
+-X POST \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+-D {
+        stepNumber: stepNumber,
+        instruction: instruction,
+        recipeId: recipeId
+    }
+```
+
+On success, the above command returns JSON structured like this:
+
+```
+{
+    stepId: stepId, 
+    stepNumber: "ingredientName", 
+    amount: "amount", 
+    recipeId: recipeId, 
+    recipe: null
+}
+```
+
 ### PUT
 #### /Recipes
 #### /Equipments
