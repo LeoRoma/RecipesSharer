@@ -20,13 +20,18 @@
 - Swagger
 
 ## Approach
-I have started first to create the Models: Users, Recipes, Ingredients, Equipments, Steps and Image. <br />
-From the Models I have used Entity Framework by using a connection string in Startup.js file to create my database and the relative tables. <br />
-The relationship between the tables are: from Users to Recipes one to many, from Recipes to Ingredients, Equipments and Steps one to many, and finally Recipes with Image one to one. <br />
+I have utilised Model First technique to create the database, by creating first User, Recipe, Ingredient, Step, Equipment and Image. After I have used Entity Framework to connect the model to the database server by creating RecipeSharerDbContext, I have passed the connection string into Startup.js. In the console I have run ```Add-Migration InitialMigration``` and after ```Update-Database```.
+
+The relationship between the tables are: from Users to Recipes one to many, from Recipes to Ingredients, Equipments and Steps one to many, and finally Recipes with Image one to one. 
+
 Once I had my database connected with the Models, I have created different Controllers for each Models. In each Controller there are CRUD functionality which for the API
-are GET, POST, PUT and DELETE. <br />
+are GET, POST, PUT and DELETE. 
+
 I have also created a Login Controller where does the User Authentication, once the User has been authenticated generates a Token that I have set up with JWT Bearer. The Token generated is going to be used to access to the different functionality of the API, such as POST, PUT and DELETE Recipes, Ingredients, Steps, Equipments and Images.
 
+For more information about how I have built JWT Bearer for the Token, and Swagger to store image into the database check this links:
+<a href="https://www.codeproject.com/Articles/5278879/Serving-Images-Stored-in-a-Database-through-a-Stat">Store an Image into database with Swagger</a>
+<a href="https://www.c-sharpcorner.com/article/jwt-json-web-token-authentication-in-asp-net-core/">JWT Bearer authentication</a>
 ## API Docs
 ### GET
 #### /Users
