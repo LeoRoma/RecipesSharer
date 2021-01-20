@@ -47,10 +47,51 @@ On success, the above command returns JSON structured like this:
         "userRole": "admin",
         "recipes": []
     }
-]
+] 
 ```
 
 #### /Recipes
+
+Returns a list of recipes.
+
+```curl "https://localhost:44330/Recipes"```
+
+On success, the above command returns JSON structured like this:
+
+```
+[
+    {
+        "recipeId": 43,
+        "recipeName": "seafood paella",
+        "description": "Authentic Spanish paella, very tasty with seafood.\nSimple to prepare and nice to share with friends.",
+        "difficulty": "easy",
+        "preparationTime": "1h",
+        "cookingTime": "1h",
+        "additionalTime": "5h",
+        "servings": 5,
+        "postDate": "2021-01-12T19:33:27.2246321",
+        "userId": 7,
+        "user": {
+        "userId": 7,
+        "username": "Mario",
+        "email": "mario@gmail.com",
+        "password": "vxFh7ubhh0Q=",
+        "userRole": "user",
+        "recipes": []
+        },
+            "ingredients": [],
+            "steps": [],
+            "equipments": [],
+            "image": {
+                "id": "b9894cb0-e74f-4df1-833f-08d8b72db795",
+                "suffix": ".jpg",
+                "recipeId": 43
+        }
+    }
+]
+
+```
+
 
 ### POST
 #### /Users
