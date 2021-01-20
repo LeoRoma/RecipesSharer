@@ -391,7 +391,77 @@ On success, the above command returns JSON structured like this:
 ```
 
 #### /Recipes
+Create a new Recipe
+
+This endpoint requires a userId and a given token in the authorization header.
+
+``` 
+curl "https://localhost:44330/Recipes/post
+-X POST \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+-D  {
+        recipeName: recipeName,
+        description: description,
+        difficulty: difficulty,
+        preparationTime: preparationTime,
+        cookingTime: cookingTime,
+        additionalTime: additionalTime,
+        servings: servings,
+        userId: userId
+    }
+```
+
+On success, the above command returns JSON structured like this:
+
+```
+{
+    additionalTime: "5h"
+    cookingTime: "1h"
+    description: "test"
+    difficulty: "easy"
+    equipments: []
+    image: null
+    ingredients: []
+    postDate: "2021-01-20T13:05:13.1582906+00:00"
+    preparationTime: "1h"
+    recipeId: 68
+    recipeName: "Test"
+    servings: 5
+    steps: []
+    user: null
+    userId: 1
+}
+```
+
 #### /Image
+Create a new Image
+
+This endpoint requires a recipeId and a given token in the authorization header.
+
+```
+curl "https://localhost:44330/Image/post/{recipeId}"
+-X POST \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+-D body: form_data
+```
+
+On success, the above command returns JSON structured like this:
+
+```
+    {   
+        file: "blob:http://localhost:3000/03c1dbfd-d7af-4a1b-8eaf-48609b3e9a0f"
+        image: File
+        lastModified: 1593540411925
+        lastModifiedDate: Tue Jun 30 2020 19:06:51 GMT+0100 (British Summer Time) {}
+        name: "makersprofilepic.jpg"
+        size: 130938
+        type: "image/jpeg"
+        webkitRelativePath: ""
+    }
+```
+
 #### /Equipments
 #### /Ingredients
 #### /Steps
