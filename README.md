@@ -363,10 +363,33 @@ On success, the above command returns JSON structured like this:
         username: "Leo", 
         email: "Leo@gmail.com", 
         password: "vxFh7ubhh0Q=", 
-    userRole: "user"
+        userRole: "user"
     }
 ```
 #### /Login
+
+Creates a new session, giving you a userId and token required to perform actions on behalf of the user (e.g. posting, updating and deleting recipes, ingredients, equipment, steps, images).
+
+```
+curl "https://localhost:44330/Login"
+
+On success, the above command returns JSON structured like this:
+
+{
+    token: "a valid token"
+    userDetails:{
+        email: "leo@gmail.com"
+        password: "vxFh7ubhh0Q="
+        recipes: []
+        userId: 1
+        userRole: "admin"
+        username: "Leo"
+    }
+
+}
+
+```
+
 #### /Recipes
 #### /Image
 #### /Equipments
