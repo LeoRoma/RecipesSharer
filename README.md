@@ -30,12 +30,13 @@ I have also created a Login Controller where does the User Authentication, once 
 ## API Docs
 ### GET
 #### /Users
-<br />
+
 Returns a list of users.
-<br />
+
 ```curl "https://localhost:44330/Users"```
-<br />
-- On success, the above command returns JSON structured like this:
+
+On success, the above command returns JSON structured like this:
+
 ```
 [
     {
