@@ -423,14 +423,14 @@ On success, the above command returns JSON structured like this:
 
 ```
 {
-    recipeId: 68
-    recipeName: "Test"
-    description: "test"
-    difficulty: "easy"
-    preparationTime: "1h"
-    cookingTime: "1h"
-    additionalTime: "5h"
-    postDate: "2021-01-20T13:05:13.1582906+00:00"
+    recipeId: recipeId
+    recipeName: "recipeName"
+    description: "description"
+    difficulty: "difficulty"
+    preparationTime: "preparationTime"
+    cookingTime: "cookingTime"
+    additionalTime: "additionalTime"
+    postDate: "0000-01-01T00:00:00.0000000+00:00"
     servings: 5
     equipments: []
     image: null
@@ -458,11 +458,11 @@ On success, the above command returns JSON structured like this:
 
 ```
     {   
-        file: "blob:http://localhost:3000/03c1dbfd-d7af-4a1b-8eaf-48609b3e9a0f"
+        file: "blob:http://localhost:3000/image_id"
         image: File
         lastModified: 1593540411925
         lastModifiedDate: Tue Jun 30 2020 19:06:51 GMT+0100 (British Summer Time) {}
-        name: "makersprofilepic.jpg"
+        name: "yourImage.jpg"
         size: 130938
         type: "image/jpeg"
         webkitRelativePath: ""
@@ -555,8 +555,50 @@ On success, the above command returns JSON structured like this:
 ```
 
 ### PUT
-#### /Recipes
-#### /Equipments
+#### /Recipes/{recipeId}/user/{userId}
+Gives the opportunity to update one or more recipe's field/s
+
+```
+curl "https://localhost:44330/Recipes/{recipeId}/user/{userId}
+-X PUT \
+-H "Content-Type': 'application/json",
+    "Authorization': "Bearer " + token"
+-D {
+        recipeName: recipeName,
+        description: description,
+        difficulty: difficulty,
+        preparationTime: preparationTime,
+        cookingTime: cookingTime,
+        additionalTime: additionalTime,
+        servings: servings,
+        userId: userId
+   }
+```
+
+On success, the above command returns JSON structured like this:
+
+```
+{
+    recipeId: recipeId
+    recipeName: "recipeName"
+    description: "description"
+    difficulty: "difficulty"
+    preparationTime: "preparationTime"
+    cookingTime: "cookingTime"
+    additionalTime: "additionalTime"
+    postDate: "0000-01-01T00:00:00.0000000+00:00"
+    servings: 5
+    equipments: []
+    image: null
+    ingredients: []
+    steps: []
+    user: null
+    userId: 1
+}
+```
+
+#### /Equipment
+
 #### /Ingredients
 #### /Steps
 ### DELETE
