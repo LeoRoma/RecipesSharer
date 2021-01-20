@@ -30,6 +30,22 @@ I have also created a Login Controller where does the User Authentication, once 
 ## API Docs
 ### GET
 #### /Users
+- Returns a list of users.
+- ```curl "https://localhost:44330/Users"```
+- On success, the above command returns JSON structured like this:
+```
+[
+    {
+        "userId": 1,
+        "username": "Leo",
+        "email": "leo@gmail.com",
+        "password": "vxFh7ubhh0Q=",
+        "userRole": "admin",
+        "recipes": []
+    }
+]
+```
+
 #### /Recipes
 
 ### POST
