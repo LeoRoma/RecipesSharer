@@ -372,9 +372,17 @@ Creates a new session, giving you a userId and token required to perform actions
 
 ```
 curl "https://localhost:44330/Login"
+-X POST \
+-H "Content-Type: application/json" \
+-D {
+        email: email,
+        password: password,
+    }
 
+```
 On success, the above command returns JSON structured like this:
 
+```
 {
     token: "a valid token"
     userDetails:{
@@ -387,7 +395,6 @@ On success, the above command returns JSON structured like this:
     }
 
 }
-
 ```
 
 #### /Recipes
