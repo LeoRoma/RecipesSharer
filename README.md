@@ -73,11 +73,11 @@ On success, the above command returns JSON structured like this:
         "userId": 7,
         "user": {
         "userId": 7,
-        "username": "Mario",
-        "email": "mario@gmail.com",
-        "password": "vxFh7ubhh0Q=",
-        "userRole": "user",
-        "recipes": []
+            "username": "Mario",
+            "email": "mario@gmail.com",
+            "password": "vxFh7ubhh0Q=",
+            "userRole": "user",
+            "recipes": []
         },
             "ingredients": [],
             "steps": [],
@@ -91,7 +91,109 @@ On success, the above command returns JSON structured like this:
 ]
 
 ```
+#### /Recipes/{id}
 
+Returns one particular recipe 
+
+```curl "https://localhost:44330/Recipes/5"```
+
+On success, the above command returns JSON structured like this:
+
+```
+{
+    "recipeId": 43,
+    "recipeName": "seafood paella",
+    "description": "Authentic Spanish paella, very tasty with seafood.\nSimple to prepare and nice to share with friends.",
+    "difficulty": "easy",
+    "preparationTime": "1h",
+    "cookingTime": "1h",
+    "additionalTime": "5h",
+    "servings": 5,
+    "postDate": "2021-01-12T19:33:27.2246321",
+    "userId": 7,
+    "user": {
+        "userId": 7,
+        "username": "Mario",
+        "email": "mario@gmail.com",
+        "password": "vxFh7ubhh0Q=",
+        "userRole": "user",
+        "recipes": []
+    },
+    "ingredients": [
+        {
+            "ingredientId": 77,
+            "ingredientName": "Clams",
+            "amount": "200 gr",
+            "recipeId": 43
+        },
+        {
+            "ingredientId": 78,
+            "ingredientName": "Water",
+            "amount": "1.5 L",
+            "recipeId": 43
+        },
+        {
+            "ingredientId": 79,
+            "ingredientName": "Rice",
+            "amount": "1 kg",
+            "recipeId": 43
+        },
+        {
+            "ingredientId": 80,
+            "ingredientName": "Prawn",
+            "amount": "500 gr",
+            "recipeId": 43
+        },
+        {
+            "ingredientId": 81,
+            "ingredientName": "Fish head",
+            "amount": "2 pcs",
+            "recipeId": 43
+        },
+        {
+            "ingredientId": 82,
+            "ingredientName": "Mussels",
+            "amount": "200 gr",
+            "recipeId": 43
+        }
+    ],
+    "steps": [
+        {
+        "stepId": 34,
+        "stepNumber": 2,
+        "instruction": "Change",
+        "recipeId": 43
+        }
+    ],
+    "equipments": [
+        {
+        "equipmentId": 43,
+        "equipmentName": "Paella pan",
+        "recipeId": 43
+        },
+        {
+        "equipmentId": 44,
+        "equipmentName": "Pot",
+        "recipeId": 43
+        },
+        {
+        "equipmentId": 45,
+        "equipmentName": "Chopping board",
+        "recipeId": 43
+        },
+        {
+        "equipmentId": 46,
+        "equipmentName": "Knife",
+        "recipeId": 43
+        }
+    ],
+    "image": {
+        "id": "b9894cb0-e74f-4df1-833f-08d8b72db795",
+        "suffix": ".jpg",
+        "recipeId": 43
+    }
+}
+```
 
 ### POST
 #### /Users
