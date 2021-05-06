@@ -37,7 +37,7 @@ namespace RecipesSharer.Controllers
             var userExists = _context.Users.Where(x => x.Email == login.Email).FirstOrDefault();
             if (userExists == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             IActionResult response = Unauthorized();
